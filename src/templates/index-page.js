@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
-
+import Carousel from 'nuka-carousel';
 import Layout from '../components/Layout'
-import Features from '../components/Features'
+// import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
+import Img from 'gatsby-image'
 
 export const IndexPageTemplate = ({
   image,
@@ -13,9 +14,19 @@ export const IndexPageTemplate = ({
   subheading,
   mainpitch,
   description,
-  intro,
+  slideImages,
 }) => (
   <div>
+    {slideImages &&
+      <div className="silde-container">
+        <Carousel>
+          {slideImages.map(edge =>
+              <Img fluid={edge.node.childImageSharp.fluid} className="slide-imag"/>
+            // <img src={edge.node.childImageSharp.fluid.src} alt={edge.node.name}/>
+          )}  
+        </Carousel>
+      </div>
+    }
     <div
       className="full-width-image margin-top-0"
       style={{
@@ -86,17 +97,17 @@ export const IndexPageTemplate = ({
                     <p>{description}</p>
                   </div>
                 </div>
-                <Features gridItems={intro.blurbs} />
+                {/* <Features gridItems={intro.blurbs} />
                 <div className="columns">
                   <div className="column is-12 has-text-centered">
                     <Link className="btn" to="/products">
                       See all products
                     </Link>
                   </div>
-                </div>
+                </div> */}
                 <div className="column is-12">
                   <h3 className="has-text-weight-semibold is-size-2">
-                    Latest stories
+                    پروژه‌ها
                   </h3>
                   <BlogRoll />
                   <div className="column is-12 has-text-centered">
@@ -128,10 +139,10 @@ IndexPageTemplate.propTypes = {
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
-
   return (
     <Layout>
       <IndexPageTemplate
+        slideImages={data.allFile.edges}
         image={frontmatter.image}
         title={frontmatter.title}
         heading={frontmatter.heading}
@@ -144,18 +155,41 @@ const IndexPage = ({ data }) => {
   )
 }
 
-IndexPage.propTypes = {
-  data: PropTypes.shape({
-    markdownRemark: PropTypes.shape({
-      frontmatter: PropTypes.object,
-    }),
-  }),
-}
+// IndexPage.propTypes = {
+//   data: PropTypes.shape({
+//     markdownRemark: PropTypes.shape({
+//       frontmatter: PropTypes.object,
+//     }),
+//   }),
+// }
 
 export default IndexPage
 
 export const pageQuery = graphql`
   query IndexPageTemplate {
+    allFile(filter: {relativePath: {regex : "/slideShow/"}}) {
+      edges{
+        node{
+          name
+          childImageSharp{
+            fluid(quality: 100) {
+              base64
+              tracedSVG
+              aspectRatio
+              src
+              srcSet
+              srcWebp
+              srcSetWebp
+              sizes
+              originalImg
+              originalName
+              presentationWidth
+              presentationHeight
+            }
+          }
+        }
+      }
+    }
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         title

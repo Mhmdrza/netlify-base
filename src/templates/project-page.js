@@ -1,15 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { kebabCase } from 'lodash'
-import Helmet from 'react-helmet'
-import { graphql, Link } from 'gatsby'
-import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
+import { graphql, Link } from 'gatsby';
+import Img from 'gatsby-image';
+import { kebabCase } from 'lodash';
+import Carousel from 'nuka-carousel';
+import PropTypes from 'prop-types';
+import React from 'react';
+import Helmet from 'react-helmet';
+import Content, { HTMLContent } from '../components/Content';
+import Layout from '../components/Layout';
 
-export const BlogPostTemplate = ({
+export const ProjectPageTemplate = ({
   content,
   contentComponent,
+  images,
   description,
+  body,
   tags,
   title,
   helmet,
@@ -19,6 +23,16 @@ export const BlogPostTemplate = ({
   return (
     <section className="section">
       {helmet || ''}
+      {images &&
+        <div className="silde-container">
+          <Carousel>
+            {images.map(edge =>
+                <Img fluid={edge.node.childImageSharp.fluid} className="slide-imag"/>
+              // <img src={edge.node.childImageSharp.fluid.src} alt={edge.node.name}/>
+            )}  
+          </Carousel>
+        </div>
+      }
       <div className="container content">
         <div className="columns">
           <div className="column is-10 is-offset-1">
@@ -46,7 +60,7 @@ export const BlogPostTemplate = ({
   )
 }
 
-BlogPostTemplate.propTypes = {
+ProjectPageTemplate.propTypes = {
   content: PropTypes.node.isRequired,
   contentComponent: PropTypes.func,
   description: PropTypes.string,
@@ -59,9 +73,11 @@ const BlogPost = ({ data }) => {
 
   return (
     <Layout>
-      <BlogPostTemplate
+      <ProjectPageTemplate
         content={post.html}
         contentComponent={HTMLContent}
+        images={post.frontmatter.images}
+        body={post.frontmatter.body}
         description={post.frontmatter.description}
         helmet={
           <Helmet titleTemplate="%s | Blog">
@@ -96,8 +112,17 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         title
         description
+        body
         tags
       }
     }
   }
-`
+  `
+  
+  // featuredimage {
+  //   childImageSharp {
+  //     fluid(maxWidth: 120, quality: 100) {
+  //       ...GatsbyImageSharpFluid
+  //     }
+  //   }
+  // }

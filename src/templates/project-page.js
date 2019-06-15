@@ -1,4 +1,4 @@
-import { graphql, Link } from 'gatsby';
+import { graphql, Link, StaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import { kebabCase } from 'lodash';
 import Carousel from 'nuka-carousel';
@@ -7,13 +7,13 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import Content, { HTMLContent } from '../components/Content';
 import Layout from '../components/Layout';
+import path from 'path'
 
 export const ProjectPageTemplate = ({
   content,
   contentComponent,
   images,
   description,
-  body,
   tags,
   title,
   helmet,
@@ -26,9 +26,15 @@ export const ProjectPageTemplate = ({
       {images &&
         <div className="silde-container">
           <Carousel>
-            {images.map(edge =>
-                <Img fluid={edge.node.childImageSharp.fluid} className="slide-imag"/>
-              // <img src={edge.node.childImageSharp.fluid.src} alt={edge.node.name}/>
+            {images.map(edge => 
+              {
+                // <StaticQuery query={``} render={data=>
+                //   <Img fluid={data.childImageSharp.fluid} className="slide-imag"/>
+                // }/>
+                return(
+                  <img src={edge.image} alt={""}/>
+                )
+              }
             )}  
           </Carousel>
         </div>
@@ -70,14 +76,13 @@ ProjectPageTemplate.propTypes = {
 
 const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data
-
+  console.log(data)
   return (
     <Layout>
       <ProjectPageTemplate
         content={post.html}
         contentComponent={HTMLContent}
         images={post.frontmatter.images}
-        body={post.frontmatter.body}
         description={post.frontmatter.description}
         helmet={
           <Helmet titleTemplate="%s | Blog">
@@ -109,20 +114,15 @@ export const pageQuery = graphql`
       id
       html
       frontmatter {
+        images {
+          image
+        }
         date(formatString: "MMMM DD, YYYY")
         title
         description
-        body
         tags
       }
     }
+    
   }
   `
-  
-  // featuredimage {
-  //   childImageSharp {
-  //     fluid(maxWidth: 120, quality: 100) {
-  //       ...GatsbyImageSharpFluid
-  //     }
-  //   }
-  // }

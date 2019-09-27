@@ -10,43 +10,43 @@ import vimeo from '../img/social/vimeo.svg'
 const Footer = class extends React.Component {
   render() {
     return (
-      <footer className="footer has-background-black has-text-white-ter">
-        <div className="content has-text-centered">
+      <footer className="">
+        <div className="">
           <img
             src={logo}
             alt="Kaldi"
             style={{ width: '14em', height: '10em' }}
           />
         </div>
-        <div className="content has-text-centered has-background-black has-text-white-ter">
-          <div className="container has-background-black has-text-white-ter">
-            <div className="columns">
-              {/* <div className="column is-4">
-                <section className="menu">
-                  <ul className="menu-list">
+        <div className="">
+          <div className="">
+            <div className="">
+              {/* <div className="">
+                <section className="">
+                  <ul className="">
                     <li>
-                      <Link to="/" className="navbar-item">
+                      <Link to="/" className="">
                         Home
                       </Link>
                     </li>
                     <li>
-                      <Link className="navbar-item" to="/about">
+                      <Link className="">
                         About
                       </Link>
                     </li>
                     <li>
-                      <Link className="navbar-item" to="/products">
+                      <Link className="">
                         Products
                       </Link>
                     </li>
                     <li>
-                      <Link className="navbar-item" to="/contact/examples">
+                      <Link className="">
                         Form Examples
                       </Link>
                     </li>
                     <li>
                       <a
-                        className="navbar-item"
+                        className=""
                         href="/admin/"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -57,23 +57,23 @@ const Footer = class extends React.Component {
                   </ul>
                 </section>
               </div> */}
-              {/* <div className="column is-4">
+              {/* <div className="">
                 <section>
-                  <ul className="menu-list">
+                  <ul className="">
                     <li>
-                      <Link className="navbar-item" to="/blog">
+                      <Link className="">
                         Latest Stories
                       </Link>
                     </li>
                     <li>
-                      <Link className="navbar-item" to="/contact">
+                      <Link className="">
                         Contact
                       </Link>
                     </li>
                   </ul>
                 </section>
               </div> */}
-              <div className="column social  d-f jcc">
+              <div className="">
                 <a title="facebook" href="https://facebook.com">
                   <img
                     src={facebook}
@@ -83,7 +83,7 @@ const Footer = class extends React.Component {
                 </a>
                 <a title="twitter" href="https://twitter.com">
                   <img
-                    className="fas fa-lg"
+                    className=""
                     src={twitter}
                     alt="Twitter"
                     style={{ width: '1em', height: '1em' }}

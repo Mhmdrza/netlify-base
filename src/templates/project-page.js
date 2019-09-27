@@ -21,15 +21,15 @@ export const ProjectPageTemplate = ({
   const PostContent = contentComponent || Content
 
   return (
-    <section className="section">
+    <section className="">
       {helmet || ''}
       {images &&
-        <div className="silde-container">
+        <div className="">
           <Carousel>
             {images.map(edge => 
               {
                 // <StaticQuery query={``} render={data=>
-                //   <Img fluid={data.childImageSharp.fluid} className="slide-imag"/>
+                //   <Img fluid={data.childImageSharp.fluid} className=""/>
                 // }/>
                 return(
                   <img src={edge.image} alt={""}/>
@@ -39,10 +39,10 @@ export const ProjectPageTemplate = ({
           </Carousel>
         </div>
       }
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
+      <div className="">
+        <div className="">
+          <div className="">
+            <h1 className="">
               {title}
             </h1>
             <p>{description}</p>
@@ -50,7 +50,7 @@ export const ProjectPageTemplate = ({
             {tags && tags.length ? (
               <div style={{ marginTop: `4rem` }}>
                 <h4>Tags</h4>
-                <ul className="taglist">
+                <ul className="">
                   {tags.map(tag => (
                     <li key={tag + `tag`}>
                       <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>

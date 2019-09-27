@@ -35,13 +35,13 @@ const Navbar = class extends React.Component {
   render() {
     return (
       <nav
-        className="navbar is-transparent"
+        className=""
         role="navigation"
         aria-label="main-navigation"
       >
-        <div className="container">
-          <div className="navbar-brand">
-            <Link to="/" className="navbar-item" title="Logo">
+        <div className="">
+          <div className="">
+            <Link to="/" className="">
               <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
             </Link>
             {/* Hamburger menu */}
@@ -59,28 +59,28 @@ const Navbar = class extends React.Component {
             id="navMenu"
             className={`navbar-menu ${this.state.navBarActiveClass}`}
           >
-            <div className="navbar-start has-text-centered">
-              <Link className="navbar-item" to="/about">
+            <div className="">
+              <Link className="">
                 درباره‌ی ما
               </Link>
-              <Link className="navbar-item" to="/projects">
+              <Link className="">
                 پروژه‌ها
               </Link>
-              <Link className="navbar-item" to="/contact">
+              <Link className="">
                 تماس با ما
               </Link>
-              {/* <Link className="navbar-item" to="/contact/examples">
+              {/* <Link className="">
                 Form Examples
               </Link> */}
             </div>
-            {/* <div className="navbar-end has-text-centered">
+            {/* <div className="">
               <a
-                className="navbar-item"
+                className=""
                 href="https://github.com/netlify-templates/gatsby-starter-netlify-cms"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="icon">
+                <span className="">
                   <img src={github} alt="Github" />
                 </span>
               </a>

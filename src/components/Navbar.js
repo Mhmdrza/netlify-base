@@ -12,9 +12,13 @@ const Navbar = class extends React.Component {
     }
   }
   isActive = (url) => {
-    return (
-      window.location.pathname == url || window.location.pathname == url +"/"
-    ); 
+    if (typeof window !== "undefined") {
+      return (
+        window.location.pathname == url ||
+        window.location.pathname == url + "/"
+      );
+    }
+    return false
   }
   
   render() {

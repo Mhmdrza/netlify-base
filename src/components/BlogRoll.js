@@ -9,37 +9,33 @@ class BlogRoll extends React.Component {
     const { edges: posts } = data.allMarkdownRemark
 
     return (
-      <div className="">
+      <div className="d-flex justify-content-center flex-wrap mb-5">
         {posts &&
           posts.map(({ node: post }) => (
-            <div className="" key={post.id}>
-              <article>
-                {post.frontmatter.images.map(obj => {
-                  // console.log(img, typeof img)
-                  return <img src={".."+obj.image} />
-                })}
-                <header>
-                  {post.frontmatter.featuredimage ? (
-                    <div className="">
-                      <PreviewCompatibleImage
-                        imageInfo={{
-                          image: post.frontmatter.featuredimage,
-                          alt: `featured image thumbnail for post ${
-                            post.title
-                          }`
-                        }}
-                      />
-                    </div>
-                  ) : null}
-                  <p className="">
-                    <Link className="" to={post.fields.slug}>
-                      {post.frontmatter.title}
-                    </Link>
-                    <span> &bull; </span>
-                    <span className="">{post.frontmatter.date}</span>
+            <div
+              className="col-sm-6 col-m-3 col-lg-3 col-xl-3"
+              key={post.id}
+            >
+              <div className="card shadow">
+                <Link className="" to={post.fields.slug}>
+                  <img
+                    src={".." + post.frontmatter.images[0].image}
+                    className="card-img-top"
+                    alt=""
+                    style={{
+                      height: "12rem"
+                    }}
+                  />
+                </Link>
+                <div className="card-footer">{post.frontmatter.title}</div>
+                <div className="card-body">
+                  <p className="card-text">
+                    {post.frontmatter.shortDescription}
                   </p>
-                </header>
-              </article>
+                  <hr />
+                  <span className="">{post.frontmatter.date}</span>
+                </div>
+              </div>
             </div>
           ))}
       </div>
@@ -72,11 +68,12 @@ export default () => (
               }
               frontmatter {
                 title
-                images{
+                images {
                   image
                 }
+                shortDescription
                 templateKey
-                date(formatString: "MMMM DD, YYYY")                
+                date(formatString: "MMMM DD, YYYY")
               }
             }
           }
@@ -85,4 +82,4 @@ export default () => (
     `}
     render={(data, count) => <BlogRoll data={data} count={count} />}
   />
-)
+);

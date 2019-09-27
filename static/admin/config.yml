@@ -20,16 +20,17 @@ collections:
           default: "project-page",
         }
       - {
-          label: "Images",
+          label: "عکسها",
           name: "images",
           widget: "list",
-          fields: [{ name: image, widget: image }],
+          fields: [{ name: عکس, widget: image }],
         }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Description", name: "description", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "عنوان", name: "title", widget: "string" }
+      - { label: "زمان انتشار", name: "date", widget: "datetime" }
+      - { label: "توضیح مختصر", name: "shortDescription", widget: "string" }
+      - { label: "توضیح کامل", name: "description", widget: "string" }
+      - { label: "optional HTML content", name: "body", widget: "markdown" }
+      - { label: "تگ ها", name: "tags", widget: "list" }
 
   - name: "pages"
     label: "Pages"

@@ -5,9 +5,9 @@ export default () => (
   <Layout>
     <section className="">
       <div className="">
-        <div className="">
+        <div className="m-4">
           <h1>Thank you!</h1>
-          <p>This is a custom thank you page for form submissions</p>
+          <p>We will reply you as soon as possible</p>
         </div>
       </div>
     </section>

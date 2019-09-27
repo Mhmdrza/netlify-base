@@ -38,7 +38,7 @@ export default class Index extends React.Component {
       <Layout>
         <section className="">
           <div className="">
-            <div className="">
+            <div className="col-sm-8 col-md-5 m-auto p-5">
               <h1>Contact</h1>
               <form
                 name="contact"
@@ -47,69 +47,66 @@ export default class Index extends React.Component {
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
                 onSubmit={this.handleSubmit}
+                netlify
               >
                 {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
                 <input type="hidden" name="form-name" value="contact" />
                 <div hidden>
                   <label>
-                    Don’t fill this out:{' '}
+                    Don’t fill this out:{" "}
                     <input name="bot-field" onChange={this.handleChange} />
                   </label>
                 </div>
                 <div className="">
-                  <label className="" htmlFor={'name'}>
+                  <label className="" htmlFor={"name"}>
                     Your name
                   </label>
                   <div className="">
                     <input
-                      className=""
-                      type={'text'}
-                      name={'name'}
+                      className="form-control"
+                      type={"text"}
+                      name={"name"}
                       onChange={this.handleChange}
-                      id={'name'}
+                      id={"name"}
                       required={true}
                     />
                   </div>
                 </div>
                 <div className="">
-                  <label className="" htmlFor={'email'}>
+                  <label className="" htmlFor={"email"}>
                     Email
                   </label>
                   <div className="">
                     <input
-                      className=""
-                      type={'email'}
-                      name={'email'}
+                      className="form-control"
+                      type={"email"}
+                      name={"email"}
                       onChange={this.handleChange}
-                      id={'email'}
+                      id={"email"}
                       required={true}
                     />
                   </div>
                 </div>
                 <div className="">
-                  <label className="" htmlFor={'message'}>
+                  <label className="" htmlFor={"message"}>
                     Message
                   </label>
                   <div className="">
                     <textarea
-                      className=""
-                      name={'message'}
+                      className="form-control"
+                      name={"message"}
                       onChange={this.handleChange}
-                      id={'message'}
+                      id={"message"}
                       required={true}
                     />
                   </div>
                 </div>
-                <div className="">
-                  <button className="">
-                    Send
-                  </button>
-                </div>
+                  <button className=" mt-2 btn btn-outline-primary">Send</button>
               </form>
             </div>
           </div>
         </section>
       </Layout>
-    )
+    );
   }
 }

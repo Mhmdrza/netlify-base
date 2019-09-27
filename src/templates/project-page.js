@@ -24,7 +24,7 @@ export const ProjectPageTemplate = ({
     <section className="">
       {helmet || ''}
       {images &&
-        <div className="">
+        <div className="container">
           <Carousel>
             {images.map(edge => 
               {
@@ -41,7 +41,7 @@ export const ProjectPageTemplate = ({
       }
       <div className="">
         <div className="">
-          <div className="">
+          <div className="container">
             <h1 className="">
               {title}
             </h1>

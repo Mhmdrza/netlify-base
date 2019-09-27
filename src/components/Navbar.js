@@ -11,84 +11,55 @@ const Navbar = class extends React.Component {
       navBarActiveClass: '',
     }
   }
-
-  toggleHamburger = () => {
-    // toggle the active boolean in the state
-    this.setState(
-      {
-        active: !this.state.active,
-      },
-      // after state has been updated,
-      () => {
-        // set the class in state for the navbar accordingly
-        this.state.active
-          ? this.setState({
-              navBarActiveClass: 'is-active',
-            })
-          : this.setState({
-              navBarActiveClass: '',
-            })
-      }
-    )
-  }
-
-  render() {
+  isActive = (url) => {
     return (
-      <nav
-        className=""
-        role="navigation"
-        aria-label="main-navigation"
-      >
-        <div className="">
-          <div className="">
-            <Link to="/" className="">
-              <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
+      window.location.pathname == url || window.location.pathname == url +"/"
+    ); 
+  }
+  
+  render() {
+    const links = [
+      {
+        url: "/projects",
+        text: "Projects",
+        className: this.isActive("/projects")
+          ? "nav-link "
+          : "nav-link text-secondary"
+      },
+      {
+        url: "/about",
+        text: "About us",
+        className: this.isActive("/about")
+          ? "nav-link "
+          : "nav-link text-secondary"
+      },
+      {
+        url: "/contact",
+        text: "Contact",
+        className: this.isActive("/contact")
+          ? "nav-link "
+          : "nav-link text-secondary"
+      }
+    ];
+    
+    return (
+      <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex flex-column">
+        <a
+          className="navbar-brand p-3 romix-logo"
+          style={{ fontSize: "2rem" }}
+          href="/"
+        >
+          Romix
+        </a>
+        <div className="d-flex flex-row justify-content-center w-100">
+          {links.map(link => (
+            <Link key={link.text} className={link.className} to={link.url}>
+              {link.text}
             </Link>
-            {/* Hamburger menu */}
-            <div
-              className={`navbar-burger burger ${this.state.navBarActiveClass}`}
-              data-target="navMenu"
-              onClick={() => this.toggleHamburger()}
-            >
-              <span />
-              <span />
-              <span />
-            </div>
-          </div>
-          <div
-            id="navMenu"
-            className={`navbar-menu ${this.state.navBarActiveClass}`}
-          >
-            <div className="">
-              <Link className="">
-                درباره‌ی ما
-              </Link>
-              <Link className="">
-                پروژه‌ها
-              </Link>
-              <Link className="">
-                تماس با ما
-              </Link>
-              {/* <Link className="">
-                Form Examples
-              </Link> */}
-            </div>
-            {/* <div className="">
-              <a
-                className=""
-                href="https://github.com/netlify-templates/gatsby-starter-netlify-cms"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="">
-                  <img src={github} alt="Github" />
-                </span>
-              </a>
-            </div> */}
-          </div>
+          ))}
         </div>
       </nav>
-    )
+    );
   }
 }
 

@@ -22,7 +22,6 @@ export default class Index extends React.Component {
                   <Link to="/contact/file-upload/">Form with file upload</Link>
                 </li>
               </ul>
-
               <h2>Troubleshooting</h2>
               <h3>Forms stop working after upgrading to Gatsby v2</h3>
               <p>

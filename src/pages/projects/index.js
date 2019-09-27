@@ -7,9 +7,7 @@ export default class BlogIndexPage extends React.Component {
   render() {
     return (
       <Layout>
-        <div className="">
-          <h1 className="">پروژه‌های ما</h1>
-        </div>
+        <div className="p-5 text-center"/>
         <section className="">
           <div className="">
             <div className="" >

@@ -16,9 +16,9 @@ export const IndexPageTemplate = ({
 }) => (
   <div>
     {slideImages &&
-      <div className="">
+      <div className="container">
         <Carousel>
-          {slideImages.map(edge =>
+          {slideImages.reverse().map(edge =>
               <Img fluid={edge.node.childImageSharp.fluid} className=""/>
             // <img src={edge.node.childImageSharp.fluid.src} alt={edge.node.name}/>
           )}  
